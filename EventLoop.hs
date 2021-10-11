@@ -92,6 +92,6 @@ background n receiver sender = do
             Event{..} -> do
                 !result <- func >>= callback
                 r <- randomRIO (1,4) :: IO Int
-                threadDelay $ r * 1000000     -- ^ To simulate a cost of computation
+                threadDelay $ r * 1000000     -- ^ To simulate computational cost
                 atomically $ writeTChan sender (Just result)
                 loop
